@@ -37,23 +37,23 @@ class Server:
             }
         return self.__indexed_dataset
 
-        def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-            """Returns a dictionary containing pagination data"""
-            assert isinstance(index, int)
-            assert 0 <= index < len(self.__indexed_dataset)
-            assert isinstance(page_size, int) and page_size > 0
-            data = []
-            current_index = index
-            indexed_data = self.indexed_dataset()
-            max_index = len(indexed_data)
-            while len(data) < page_size and current_index < max_index:
-                if current_index in indexed_data:
-                    data.append(indexed_data[current_index])
-                current_index += 1
-            next_index = current_index if current_index < max_index else None
-            return {
-                "index": index,
-                "next_index": next_index + 1,
-                "page_size": page_size,
-                "data": data,
-            }
+    def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
+        """Returns a dictionary containing pagination data"""
+        assert isinstance(index, int)
+        assert 0 <= index < len(self.__indexed_dataset)
+        assert isinstance(page_size, int) and page_size > 0
+        data = []
+        current_index = index
+        indexed_data = self.indexed_dataset()
+        max_index = len(indexed_data)
+        while len(data) < page_size and current_index < max_index:
+            if current_index in indexed_data:
+                data.append(indexed_data[current_index])
+            current_index += 1
+        next_index = current_index if current_index < max_index else None
+        return {
+            "index": index,
+            "next_index": next_index + 1,
+            "page_size": page_size,
+            "data": data,
+        }
