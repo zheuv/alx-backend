@@ -7,6 +7,7 @@ import os
 
 
 class Config:
+    """ doc for class """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
@@ -18,12 +19,14 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
+    """doc for func"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
-def index():
+def index() -> str:
+    """doc for func"""
     return render_template('index.html', 
                            home_title=_("home_title"), 
                            home_header=_("home_header"))
