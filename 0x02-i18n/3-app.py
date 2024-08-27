@@ -27,8 +27,8 @@ def get_locale() -> str:
 @app.route('/')
 def index() -> str:
     """doc for func"""
-    return render_template('index.html', 
-                           home_title=_("home_title"), 
+    return render_template('index.html',
+                           home_title=_("home_title"),
                            home_header=_("home_header"))
 
 
